@@ -1,0 +1,8 @@
+{
+  "name": "Berber Vezir",
+  "description": "Berber Vezir - Bursa Hamitler Mahallesi Erkek Kuaförü ve Randevu Sitesi",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
