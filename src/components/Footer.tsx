@@ -1,5 +1,5 @@
 import { Phone, MapPin, ArrowUp, Instagram, Youtube } from 'lucide-react';
-import { BUSINESS_INFO } from '../data/barberData';
+import { BUSINESS_INFO, ASSETS } from '../data/barberData';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -12,13 +12,18 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-[#202020]">
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="flex items-center gap-2.5 mb-2">
-              <div className="w-8 h-8 rounded bg-[#1a1a1a] border border-[#d4af37]/40 flex items-center justify-center text-[#d4af37]">
-                <span className="font-['Cinzel',serif] font-bold text-sm">V</span>
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-12 h-12 rounded-xl p-0.5 bg-gradient-to-br from-[#d4af37] via-[#f7e49a] to-[#8a6a16] shadow-[0_0_15px_rgba(212,175,55,0.25)] flex items-center justify-center shrink-0">
+                <div className="w-full h-full bg-[#141414] rounded-[10px] overflow-hidden flex items-center justify-center p-1">
+                  <img src={ASSETS.logo} alt="Berber Vezir Logo" className="w-full h-full object-contain" />
+                </div>
               </div>
-              <span className="font-['Cinzel',serif] text-xl font-bold tracking-wider text-[#f5f5f5]">
-                {BUSINESS_INFO.name}
-              </span>
+              <div className="flex flex-col">
+                <span className="font-['Cinzel',serif] text-xl font-bold tracking-wider text-[#f5f5f5]">
+                  {BUSINESS_INFO.name}
+                </span>
+                <span className="text-[11px] text-[#d4af37] font-semibold">Hamitler, Bursa</span>
+              </div>
             </div>
             <p className="text-xs text-[#777777] max-w-sm">
               {BUSINESS_INFO.title} • {BUSINESS_INFO.locationText}

@@ -1,4 +1,19 @@
-import { ServiceItem, WorkingHour } from '../types';
+import { ServiceItem, WorkingHour, TimeSlot, HaircutSample } from '../types';
+import logoImg from '../assets/images/vezir_v_logo_bold_1788793776844.jpg';
+import clipperImg from '../assets/images/real_clipper_fade_1788793761768.jpg';
+import interiorImg from '../assets/images/barber_interior_real_1788793792092.jpg';
+import sampleFade from '../assets/images/haircut_fade_sample_1788793281016.jpg';
+import sampleGroom from '../assets/images/haircut_groom_sample_1788793291601.jpg';
+import sampleBeard from '../assets/images/haircut_beard_sample_1788793304343.jpg';
+
+export const ASSETS = {
+  logo: logoImg,
+  clipper: clipperImg,
+  interior: interiorImg,
+  fadeSample: sampleFade,
+  groomSample: sampleGroom,
+  beardSample: sampleBeard,
+};
 
 export const BUSINESS_INFO = {
   name: 'Berber Vezir',
@@ -12,6 +27,96 @@ export const BUSINESS_INFO = {
   whatsappUrl: 'https://wa.me/905337667216',
   instagramUrl: 'https://instagram.com',
   youtubeUrl: 'https://youtube.com',
+};
+
+export const HAIRCUT_SAMPLES: HaircutSample[] = [
+  {
+    id: 'sample-1',
+    title: 'Kafa Yapısına Özel Skin Fade & Texture',
+    category: 'Saç Kesimi',
+    description: 'Kafa anatomisine göre milimetrik geçişli fade, ense hatları ve üst katman dokulandırma.',
+    image: sampleFade,
+    tag: 'En Çok Tercih Edilen',
+    matchedServiceId: 'sac-trasi',
+  },
+  {
+    id: 'sample-2',
+    title: 'Özel Gün & Damat Tıraşı Tasarımı',
+    category: 'VIP Bakım',
+    description: 'Damatlık ve takım elbiseye kusursuz uyum sağlayan stil, fön ve kontürlü sakal bitişi.',
+    image: sampleGroom,
+    tag: 'Damat & Özel Gün',
+    matchedServiceId: 'damat-tirasi',
+  },
+  {
+    id: 'sample-3',
+    title: 'Ustura Sakal Çizimi & Sıcak Havlu',
+    category: 'Sakal Tasarımı',
+    description: 'Milimetrik yanak çizgisi, çene formu belirleme, sıcak havlu kompresi ve ferahlatıcı yağ.',
+    image: sampleBeard,
+    tag: 'Usta Dokunuş',
+    matchedServiceId: 'sakal-tirasi',
+  },
+];
+
+export const SCHEDULE_DAYS = [
+  { id: 'today', label: 'Bugün', subtitle: 'Tek Berber Seansları' },
+  { id: 'tomorrow', label: 'Yarın', subtitle: 'Erken Rezervasyon' },
+  { id: 'day_after', label: 'Sonraki Gün', subtitle: 'Haftalık Plan' },
+];
+
+export const DAILY_SLOTS: Record<string, TimeSlot[]> = {
+  today: [
+    { time: '09:30', status: 'available', note: 'Müsait' },
+    { time: '10:15', status: 'available', note: 'Müsait' },
+    { time: '11:00', status: 'available', note: 'Müsait' },
+    { time: '11:45', status: 'available', note: 'Müsait' },
+    { time: '13:00', status: 'available', note: 'Müsait' },
+    { time: '13:45', status: 'available', note: 'Müsait' },
+    { time: '14:30', status: 'available', note: 'Müsait' },
+    { time: '15:15', status: 'available', note: 'Müsait' },
+    { time: '16:00', status: 'available', note: 'Müsait' },
+    { time: '16:45', status: 'available', note: 'Müsait' },
+    { time: '17:30', status: 'available', note: 'Müsait' },
+    { time: '18:15', status: 'available', note: 'Müsait' },
+    { time: '19:00', status: 'available', note: 'Müsait' },
+    { time: '19:45', status: 'available', note: 'Müsait' },
+    { time: '20:15', status: 'available', note: 'Müsait' },
+  ],
+  tomorrow: [
+    { time: '09:30', status: 'available', note: 'Müsait' },
+    { time: '10:15', status: 'available', note: 'Müsait' },
+    { time: '11:00', status: 'available', note: 'Müsait' },
+    { time: '11:45', status: 'available', note: 'Müsait' },
+    { time: '13:00', status: 'available', note: 'Müsait' },
+    { time: '13:45', status: 'available', note: 'Müsait' },
+    { time: '14:30', status: 'available', note: 'Müsait' },
+    { time: '15:15', status: 'available', note: 'Müsait' },
+    { time: '16:00', status: 'available', note: 'Müsait' },
+    { time: '16:45', status: 'available', note: 'Müsait' },
+    { time: '17:30', status: 'available', note: 'Müsait' },
+    { time: '18:15', status: 'available', note: 'Müsait' },
+    { time: '19:00', status: 'available', note: 'Müsait' },
+    { time: '19:45', status: 'available', note: 'Müsait' },
+    { time: '20:15', status: 'available', note: 'Müsait' },
+  ],
+  day_after: [
+    { time: '09:30', status: 'available', note: 'Müsait' },
+    { time: '10:15', status: 'available', note: 'Müsait' },
+    { time: '11:00', status: 'available', note: 'Müsait' },
+    { time: '11:45', status: 'available', note: 'Müsait' },
+    { time: '13:00', status: 'available', note: 'Müsait' },
+    { time: '13:45', status: 'available', note: 'Müsait' },
+    { time: '14:30', status: 'available', note: 'Müsait' },
+    { time: '15:15', status: 'available', note: 'Müsait' },
+    { time: '16:00', status: 'available', note: 'Müsait' },
+    { time: '16:45', status: 'available', note: 'Müsait' },
+    { time: '17:30', status: 'available', note: 'Müsait' },
+    { time: '18:15', status: 'available', note: 'Müsait' },
+    { time: '19:00', status: 'available', note: 'Müsait' },
+    { time: '19:45', status: 'available', note: 'Müsait' },
+    { time: '20:15', status: 'available', note: 'Müsait' },
+  ],
 };
 
 export const SERVICES: ServiceItem[] = [
@@ -76,10 +181,9 @@ export const WORKING_HOURS: WorkingHour[] = [
   { day: 'Pazar', hours: 'Kapalı' },
 ];
 
-export function getShopStatus(): { isOpen: boolean; text: string; details: string } {
-  // Using Turkey Time (UTC+3)
+export function getShopStatus(): { isOpen: boolean; text: string; details: string; isNightClosed: boolean } {
+  // Turkey Time (UTC+3)
   const now = new Date();
-  // Turkey is UTC+3
   const utc = now.getTime() + now.getTimezoneOffset() * 60000;
   const turkeyTime = new Date(utc + 3600000 * 3);
 
@@ -88,29 +192,34 @@ export function getShopStatus(): { isOpen: boolean; text: string; details: strin
   const minute = turkeyTime.getMinutes();
   const currentTime = hour * 60 + minute;
 
+  // Sunday is closed
   if (day === 0) {
     return {
       isOpen: false,
-      text: 'Pazar Günleri Kapalıyız',
-      details: 'Pazartesi 09:00’da hizmetinizdeyiz',
+      text: 'Pazar Günü Kapalı',
+      details: 'Pazartesi sabah 09:00’da hizmetinizdeyiz. Yarın için randevu oluşturabilirsiniz.',
+      isNightClosed: false,
     };
   }
 
-  const openTime = 9 * 60; // 09:00
-  const closeTime = day === 6 ? 20 * 60 : 21 * 60; // 20:00 on Saturday, 21:00 on weekdays
+  const openTime = 9 * 60; // Sabah 09:00
+  const closeTime = 21 * 60; // Akşam 21:00 (saat 9)
 
-  if (currentTime >= openTime && currentTime < closeTime) {
-    const closingHourStr = day === 6 ? '20:00' : '21:00';
-    return {
-      isOpen: true,
-      text: 'Şu An Açık',
-      details: `Bugün ${closingHourStr}'e kadar hizmetinizdeyiz`,
-    };
-  } else {
+  // Gece veya sabah saat 9 öncesi kapalı
+  if (currentTime < openTime || currentTime >= closeTime) {
     return {
       isOpen: false,
-      text: 'Şu An Kapalı',
-      details: 'Çalışma saatleri: Hafta içi 09:00-21:00 | Cts 09:00-20:00',
+      text: 'Şu Anda Kapalı',
+      details: 'Salonumuz akşam 21:00 ile sabah 09:00 arası kapalıdır. Yarın için randevu alabilirsiniz.',
+      isNightClosed: true,
     };
   }
+
+  // Açık saatler: 09:00 - 21:00
+  return {
+    isOpen: true,
+    text: 'Şu An Açık',
+    details: 'Tek berber, birebir usta hizmeti. Akşam 21:00’e kadar açığız.',
+    isNightClosed: false,
+  };
 }

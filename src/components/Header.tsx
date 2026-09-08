@@ -1,45 +1,88 @@
-import { Phone, MapPin, Calendar, Clock } from 'lucide-react';
-import { BUSINESS_INFO, getShopStatus } from '../data/barberData';
+import { Phone, Calendar, Clock, Play } from 'lucide-react';
+import { BUSINESS_INFO, ASSETS, getShopStatus } from '../data/barberData';
 
 interface HeaderProps {
   onOpenAppointment: () => void;
+  onReplayIntro?: () => void;
+  onOpenAdmin?: () => void;
 }
 
-export default function Header({ onOpenAppointment }: HeaderProps) {
+export default function Header({ onOpenAppointment, onReplayIntro, onOpenAdmin }: HeaderProps) {
   const status = getShopStatus();
 
   return (
-    <header className="sticky top-0 z-40 bg-[#141414]/90 backdrop-blur-md border-b border-[#d4af37]/20 transition-all">
+    <header className="sticky top-0 z-40 bg-[#121212]/95 backdrop-blur-md border-b border-[#d4af37]/20 transition-all">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-        {/* Logo & Brand */}
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-lg bg-[#1a1a1a] border border-[#d4af37]/40 flex items-center justify-center text-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.15)] group-hover:border-[#d4af37] group-hover:scale-105 transition-all">
-            <span className="font-['Cinzel',serif] font-bold text-xl tracking-wider">V</span>
+        {/* Logo & Brand (Sol üstteki logoya basınca Admin Paneli açılır) */}
+        <button
+          onClick={onOpenAdmin}
+          id="header-logo-admin-trigger"
+          title="Berber Vezir (Yönetici Paneli için Tıklayın)"
+          className="flex items-center gap-3.5 group text-left cursor-pointer border-none bg-transparent p-0"
+        >
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl p-0.5 bg-gradient-to-br from-[#d4af37] via-[#f7e49a] to-[#8a6a16] shadow-[0_0_20px_rgba(212,175,55,0.35)] group-hover:scale-105 group-hover:shadow-[0_0_28px_rgba(212,175,55,0.55)] transition-all shrink-0">
+            <div className="w-full h-full bg-[#111111] rounded-[14px] overflow-hidden flex items-center justify-center p-1 relative">
+              <img
+                src={ASSETS.logo}
+                alt="Berber Vezir Logo"
+                className="w-full h-full object-contain filter drop-shadow-[0_2px_6px_rgba(212,175,55,0.45)]"
+              />
+            </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-['Cinzel',serif] text-lg sm:text-xl font-bold tracking-wider text-[#f5f5f5] group-hover:text-[#d4af37] transition-colors">
+            <span className="font-['Cinzel',serif] text-xl sm:text-2xl font-bold tracking-wider text-[#f5f5f5] group-hover:text-[#d4af37] transition-colors leading-none mb-1">
               BERBER VEZİR
             </span>
-            <span className="text-xs text-[#a0a0a0] flex items-center gap-1 font-medium">
-              <MapPin className="w-3 h-3 text-[#d4af37]" />
-              Hamitler, Bursa
+            <span className="text-[10px] sm:text-[11px] text-[#8e8e8e] font-medium tracking-normal group-hover:text-[#b0b0b0] transition-colors">
+              Erkek Kuaförü • Hamitler, Bursa
             </span>
           </div>
-        </a>
+        </button>
 
-        {/* Center Live Status Badge (Desktop) */}
-        <div className="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-xs">
-          <span className={`w-2 h-2 rounded-full ${status.isOpen ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`} />
-          <span className="text-[#dcdcdc] font-medium">{status.text}</span>
-          <span className="text-[#888888]">•</span>
-          <span className="text-[#999999] flex items-center gap-1">
-            <Clock className="w-3 h-3 text-[#d4af37]" />
-            Hafta içi 09:00-21:00
-          </span>
-        </div>
+        {/* Center Navigation Links (Desktop) */}
+        <nav className="hidden lg:flex items-center gap-6 text-xs font-semibold uppercase tracking-wider text-[#b8b8b8]">
+          <a
+            href="#randevu-menusu"
+            className="hover:text-[#d4af37] transition-colors flex items-center gap-1.5"
+          >
+            <Clock className="w-3.5 h-3.5 text-[#d4af37]" />
+            <span>Müsaitlik & Menü</span>
+          </a>
+          <a
+            href="#hizmetler"
+            className="hover:text-[#d4af37] transition-colors"
+          >
+            Hizmet & Fiyat
+          </a>
+          <a
+            href="#galeri"
+            className="hover:text-[#d4af37] transition-colors"
+          >
+            Modeller
+          </a>
+          <a
+            href="#iletisim"
+            className="hover:text-[#d4af37] transition-colors"
+          >
+            İletişim & Harita
+          </a>
+        </nav>
 
         {/* Right CTA Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Replay Intro Button */}
+          {onReplayIntro && (
+            <button
+              onClick={onReplayIntro}
+              id="replay-intro-btn"
+              title="Giriş Animasyonunu İzle"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#1c1c1c] hover:bg-[#252525] border border-[#333333] hover:border-[#d4af37]/40 text-xs font-semibold text-[#c0c0c0] hover:text-[#d4af37] transition-all cursor-pointer"
+            >
+              <Play className="w-3.5 h-3.5 fill-current text-[#d4af37]" />
+              <span>Giriş</span>
+            </button>
+          )}
+
           {/* Call Button */}
           <a
             href={`tel:${BUSINESS_INFO.phoneRaw}`}
